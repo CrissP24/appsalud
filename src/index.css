@@ -1,0 +1,252 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Warm, grounding palette */
+    --background: 40 30% 97%;
+    --foreground: 30 20% 15%;
+
+    --card: 40 25% 95%;
+    --card-foreground: 30 20% 15%;
+
+    --popover: 40 30% 97%;
+    --popover-foreground: 30 20% 15%;
+
+    /* Sage green - calming primary */
+    --primary: 150 25% 45%;
+    --primary-foreground: 40 30% 97%;
+
+    /* Warm sand */
+    --secondary: 35 30% 90%;
+    --secondary-foreground: 30 20% 25%;
+
+    /* Soft muted tones */
+    --muted: 35 20% 92%;
+    --muted-foreground: 30 15% 50%;
+
+    /* Terracotta accent */
+    --accent: 20 45% 65%;
+    --accent-foreground: 40 30% 97%;
+
+    --destructive: 0 60% 55%;
+    --destructive-foreground: 40 30% 97%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 150 25% 45%;
+
+    --radius: 1rem;
+
+    /* Custom LIFE tokens */
+    --life-sage: 150 25% 45%;
+    --life-sage-light: 150 25% 92%;
+    --life-sand: 35 30% 90%;
+    --life-sand-dark: 35 25% 75%;
+    --life-terracotta: 20 45% 65%;
+    --life-terracotta-light: 20 45% 92%;
+    --life-earth: 30 20% 25%;
+    --life-cream: 40 30% 97%;
+    --life-warmth: 25 35% 50%;
+
+    /* Sidebar - warm tones */
+    --sidebar-background: 35 30% 95%;
+    --sidebar-foreground: 30 20% 25%;
+    --sidebar-primary: 150 25% 45%;
+    --sidebar-primary-foreground: 40 30% 97%;
+    --sidebar-accent: 35 25% 88%;
+    --sidebar-accent-foreground: 30 20% 25%;
+    --sidebar-border: 35 20% 85%;
+    --sidebar-ring: 150 25% 45%;
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 35 20% 92%;
+
+    --card: 30 15% 13%;
+    --card-foreground: 35 20% 92%;
+
+    --popover: 30 15% 10%;
+    --popover-foreground: 35 20% 92%;
+
+    --primary: 150 30% 55%;
+    --primary-foreground: 30 15% 10%;
+
+    --secondary: 30 15% 18%;
+    --secondary-foreground: 35 20% 92%;
+
+    --muted: 30 15% 18%;
+    --muted-foreground: 35 15% 60%;
+
+    --accent: 20 40% 55%;
+    --accent-foreground: 35 20% 92%;
+
+    --destructive: 0 55% 45%;
+    --destructive-foreground: 35 20% 92%;
+
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 150 30% 55%;
+
+    --life-sage: 150 30% 55%;
+    --life-sage-light: 150 20% 18%;
+    --life-sand: 30 15% 18%;
+    --life-sand-dark: 30 15% 30%;
+    --life-terracotta: 20 40% 55%;
+    --life-terracotta-light: 20 25% 18%;
+    --life-earth: 35 20% 85%;
+    --life-cream: 30 15% 10%;
+    --life-warmth: 25 30% 50%;
+
+    --sidebar-background: 30 15% 12%;
+    --sidebar-foreground: 35 20% 90%;
+    --sidebar-primary: 150 30% 55%;
+    --sidebar-primary-foreground: 30 15% 10%;
+    --sidebar-accent: 30 15% 18%;
+    --sidebar-accent-foreground: 35 20% 90%;
+    --sidebar-border: 30 15% 18%;
+    --sidebar-ring: 150 30% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .life-container {
+    @apply max-w-md mx-auto px-6 py-8;
+  }
+
+  .life-card {
+    @apply bg-card rounded-2xl p-6 shadow-sm border border-border/50;
+  }
+
+  .life-button-primary {
+    @apply bg-primary text-primary-foreground rounded-full px-8 py-4 font-medium 
+           transition-all duration-500 ease-out hover:scale-[1.02] hover:shadow-lg
+           active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .life-button-secondary {
+    @apply bg-secondary text-secondary-foreground rounded-full px-6 py-3 font-medium 
+           transition-all duration-500 ease-out hover:bg-secondary/80
+           active:scale-[0.98];
+  }
+
+  .life-button-ghost {
+    @apply text-muted-foreground rounded-full px-4 py-2 font-medium 
+           transition-all duration-300 hover:bg-muted hover:text-foreground;
+  }
+
+  .life-input {
+    @apply w-full bg-muted/50 border-0 rounded-xl px-5 py-4 text-foreground 
+           placeholder:text-muted-foreground/60 focus:ring-2 focus:ring-primary/30
+           transition-all duration-300;
+  }
+
+  .life-textarea {
+    @apply w-full bg-muted/50 border-0 rounded-xl px-5 py-4 text-foreground 
+           placeholder:text-muted-foreground/60 focus:ring-2 focus:ring-primary/30
+           transition-all duration-300 resize-none min-h-[120px];
+  }
+
+  .life-checkbox {
+    @apply w-6 h-6 rounded-lg border-2 border-border bg-background 
+           checked:bg-primary checked:border-primary transition-all duration-300
+           cursor-pointer;
+  }
+
+  .life-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .life-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .life-breathe {
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  .life-pulse-slow {
+    animation: pulseSlow 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-serif {
+    font-family: 'Instrument Serif', Georgia, serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
